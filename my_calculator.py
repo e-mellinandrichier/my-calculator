@@ -26,23 +26,6 @@ def division(my_operation, my_second_operation):
     result = my_operation / my_second_operation
     return result
 
-# while user_answer != "=":
-#     my_operation = 0
-#     my_second_operation = 0
-#     user_answer = float(input("dites un chiffre"))
-#     my_operation += user_answer
-#     user_sign = input("dites un operateur")
-#     user_answer = float(input("dites un chiffre"))
-#     my_second_operation += user_answer
-#     if user_sign == "+":
-#         print(add(my_operation, my_second_operation))
-#     if user_sign == "-":
-#         print(minus(my_operation, my_second_operation))
-#     if user_sign == "x":
-#         print(multiply(my_operation, my_second_operation))
-#     if user_sign == ":":
-#         print(division(my_operation, my_second_operation))
-
 
 my_list = []
 user_truc = ""
@@ -100,8 +83,3 @@ def parenthesis(my_list, index):
         index +=1
     print(my_stuff)
 haha = parenthesis(my_list)
-# print(haha)
-
-# del haha[-1]
-# result = haha[0]
-# print(result)
