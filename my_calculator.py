@@ -1,6 +1,33 @@
 
 result = 0
 
+histo =[]
+def load_history():
+    try:
+        with open("histo.txt", "r") as file:
+            global histo
+            histo = file.readlines()
+    except FileNotFoundError:
+        pass
+def save_history():
+    with open("histo.txt", "w") as file:
+        for element in histo:
+            file.write(element + "\n")
+def display_histo():
+    if not histo:
+        print("History is empty.")
+    for element in histo:
+        print(element)
+def supr_histo():
+    supr = input("Do you want to delete history? (YES/NO) : ")
+    if supr == "YES":
+        histo.clear()
+        save_history()
+        print("History has been deleted")
+        menu()
+    elif supr == "NO":
+        menu()
+
 def add(my_operation, my_second_operation):
     result = my_operation + my_second_operation
     return result
@@ -136,8 +163,18 @@ def menu():
                 index +=1
         else : index +=1
     calculator(my_list)
-
     print(my_list[0])
+    histo.append(f"{operation} = {my_list[0]}")
+    view_histo = input("Write (view) to display history:")
+    if view_histo=="view":
+        try:
+            display_histo()
+            supr_histo()
+        except:
+            print("Please enter a correct input")
+            menu()
+    save_history()
     menu()
+load_history()
 menu()
 
