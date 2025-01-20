@@ -1,5 +1,4 @@
 
-
 result = 0
 
 def add(my_operation, my_second_operation):
@@ -73,10 +72,8 @@ def parenthesis(my_list):
         my_stuff.append(my_list[index])
         index +=1
     truc(my_stuff)
-    # print(my_stuff)
     index2 = last +1
     my_list[last] = my_stuff[0]
-    # print(my_list)
     while my_list[index2] != ")":
         del my_list[index2]
     del my_list[index2]
@@ -84,6 +81,7 @@ def parenthesis(my_list):
         truc(my_list)
 
 def menu():
+
     operator = ["+", "-", "x", ":","(",")"]        
     user_input = ""
     my_list = []
@@ -101,7 +99,7 @@ def menu():
     for e in my_list:
         operation += e
     print(operation, "=")
-        
+
     index = 0
     while index < len(my_list):
         if my_list[index] == "(":
@@ -111,6 +109,8 @@ def menu():
                 index +=1
         else : index +=1
     truc(my_list)
+
     print(my_list[0])
     menu()
 menu()
+
