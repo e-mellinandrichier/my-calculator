@@ -13,8 +13,38 @@ def multiply(my_operation, my_second_operation):
     return result
 
 def division(my_operation, my_second_operation):
-    result = my_operation / my_second_operation
+    result = my_operation * my_second_operation
     return result
+    # if my_operation == 0 :
+    #     return "Erreur"
+    # if my_second_operation == 0 :
+    #     return "Erreur"
+    # else : 
+    #     result = my_operation/my_second_operation
+    #     return result
+
+
+
+# my_list = ["12", "x", "(", "2", "+", "(", "2", "x", "(", "4", "+", "8", ")", ")", ")", "="]
+# my_list = ["2", "+", "3", "x", "4", "+" ,"(", "1", "+", "(", "3", "+", "4", ")", ")", "="]
+    
+user_truc = ""  
+my_list = []
+operator = ["+", "-", "x", ":","(",")"]        
+
+while user_truc != "=":
+    user_truc = input("entrez des trucs")
+    if user_truc == "=":
+        break
+    if user_truc in operator or user_truc.isdigit():
+        my_list.append(user_truc)  
+    else:
+        print(f"Erreur : '{user_truc}' n'est pas accepté.")
+
+# quand il y a les parenthèses il fo absolument un signe avant la première parenthèse (
+# et un signe après la parenthèse 
+
+# print(my_list)
 
 def truc(my_list):
     i = 0
@@ -26,7 +56,7 @@ def truc(my_list):
                 my_list[i] = result
                 del my_list[i-1]
                 i-=1
-            if my_list[i] == ":":
+            if my_list[i] == ":": 
                 result =division(float(my_list[i-1]), float(my_list[i+1]))
                 del my_list[i+1]
                 my_list[i] = result
@@ -91,6 +121,7 @@ def menu():
     while index < len(my_list):
         if my_list[index] == "(":
             index +=1
+
             while index < len(my_list):
                 parenthesis(my_list)
                 index +=1
@@ -100,3 +131,4 @@ def menu():
     print(my_list[0])
     menu()
 menu()
+
