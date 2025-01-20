@@ -25,13 +25,6 @@ def multiply(my_operation, my_second_operation):
 def division(my_operation, my_second_operation):
     result = my_operation * my_second_operation
     return result
-    # if my_operation == 0 :
-    #     return "Erreur"
-    # if my_second_operation == 0 :
-    #     return "Erreur"
-    # else : 
-    #     result = my_operation/my_second_operation
-    #     return result
 
 
 # my_list = ["12", "x", "(", "2", "+", "(", "2", "x", "(", "4", "+", "8", ")", ")", ")", "="]
