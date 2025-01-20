@@ -17,7 +17,7 @@ def division(my_operation, my_second_operation):
     result = my_operation * my_second_operation
     return result
 
-def truc(my_list):
+def calculator(my_list):
     i = 0
     while i < len(my_list):
         if my_list[i] == "x" or my_list[i] == ":":
@@ -56,7 +56,7 @@ def truc(my_list):
 
 def parenthesis(my_list):
     last = 0
-    my_stuff = []
+    my_list2 = []
     index = 0
     while index < len(my_list):
         if my_list[index] == "(":
@@ -69,16 +69,14 @@ def parenthesis(my_list):
         else : index +=1
     index = last +1
     while my_list[index] != ")":
-        my_stuff.append(my_list[index])
+        my_list2.append(my_list[index])
         index +=1
-    truc(my_stuff)
+    calculator(my_list2)
     index2 = last +1
-    my_list[last] = my_stuff[0]
+    my_list[last] = my_list2[0]
     while my_list[index2] != ")":
         del my_list[index2]
     del my_list[index2]
-    if counterp == 1:
-        truc(my_list)
 
 def menu():
 
@@ -86,15 +84,44 @@ def menu():
     user_input = ""
     my_list = []
     index = 0
+    jindex = 0
+    operatorparam = ["+", "-", ":", "x"]
+    operatorparam2 = ["+", "-", ":", "x", "("]
+    parenthesisparam = ["(", ")"]
 
     while user_input != "=":
-        user_input = input("Entrez un nombre ou un opérateur (+, -, x, : ou ())")
+        user_input = input("__________Enter a number or an operator sign (+, -, x, : ou ())__________\n")
         if user_input == "=":
             break
-        if user_input in operator or user_input.isdigit():
+        if user_input in operator or user_input.lstrip("-").isdigit():
             my_list.append(user_input)
+            while jindex < len(my_list):
+                if jindex == 0:
+                    if my_list[jindex] in operatorparam or my_list[jindex] == ")":
+                        print("Not valid. Please try again")
+                        menu()
+                if jindex >= 1:
+                    if my_list[jindex].lstrip("-").isdigit():
+                        if my_list[jindex - 1] not in operator:
+                            print("Not valid. Please try again")
+                            menu()
+                    if my_list[jindex] in operatorparam:
+                        if my_list[jindex - 1] in operatorparam2:
+                            print("Not valid. Please try again")
+                            menu()
+                    if my_list[jindex] == "(":
+                        if my_list[jindex - 1] not in operatorparam:
+                            print("Not valid. Please try again")
+                            menu()
+                    if my_list[jindex] == ")":
+                        if my_list[jindex - 1] in operator:
+                            print("Not valid. Please try again")
+                            menu()
+
+                    
+                jindex +=1
         else:
-            print(f"Erreur : '{user_input}' n'est pas accepté.")
+            print(f"Error : '{user_input}' is not valid.")
     operation = ""
     for e in my_list:
         operation += e
@@ -108,7 +135,7 @@ def menu():
                 parenthesis(my_list)
                 index +=1
         else : index +=1
-    truc(my_list)
+    calculator(my_list)
 
     print(my_list[0])
     menu()
