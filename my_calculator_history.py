@@ -144,6 +144,7 @@ def menu():
 
         print(my_list[0])
         histo.append(f"{operation} = {my_list[0]}")
+        save_history()
         view_histo = input("Write (view) to display history:")
         if view_histo=="view":
             try:
@@ -152,7 +153,6 @@ def menu():
             except:
                 print("Please enter a correct input")
                 menu()
-        save_history()
         menu()
 
 load_history()  
