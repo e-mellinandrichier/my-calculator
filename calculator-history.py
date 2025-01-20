@@ -1,5 +1,4 @@
 
-# Len() = nombre caractère dans str.  Float(3) = 3.0 . Isdigit() = Vérifie que tout les caractères d'une string son des nombres
 
 
 histo = []
